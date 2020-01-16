@@ -31,7 +31,7 @@ def cardinality(all_names: list):
     Returns:
 
     """
-    print("### Cardinality")
+    print("\n### Cardinality")
     print("Number of unique full names: %s" % len(set(all_names)))
     print("Number of unique last names: %s" % len(set((last_name for last_name, _ in all_names))))
     print("Number of unique first names: %s" %
@@ -49,7 +49,7 @@ def most_common_first_names(all_names: list, max_count: int):
     Returns:
 
     """
-    print("### most common first names sorted in descending order")
+    print("\n### most common first names sorted in descending order")
     first_names = Counter((first_name for _, first_name in all_names))
 
     for name, count in first_names.most_common(max_count):
@@ -67,7 +67,7 @@ def most_common_last_names(all_names: list, max_count: int):
     Returns:
 
     """
-    print("### most common last names sorted in descending order")
+    print("\n### most common last names sorted in descending order")
     last_names = Counter((last_name for last_name, _ in all_names))
 
     for name, count in last_names.most_common(max_count):
@@ -88,7 +88,7 @@ def get_unique_names(all_names: list, max_count: int) -> list:
     Returns:
 
     """
-    print("### Unique (last name, first name) set")
+    print("\n### Unique (last name, first name) set")
     recent_fist_names = set()
     recent_last_names = set()
 
@@ -120,7 +120,7 @@ def modify_names(unique_names: list):
     Returns:
 
     """
-    print("### Modified (last name, first name) set")
+    print("\n### Modified (last name, first name) set")
     last_names = [last_name for last_name, _ in unique_names]
     first_names = [first_name for _, first_name in unique_names]
 
