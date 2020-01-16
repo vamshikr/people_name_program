@@ -80,8 +80,7 @@ Koch, Nicolas
 Cartwright, Mckenna
 ```
 
-=== Modified Names List
-Logic explained
+=== Modified Names List Logic
 
 [[unique-names-list]]
 .Unique names list:
@@ -95,7 +94,7 @@ Logic explained
 | e | 5
 |==========================
 
-Rotate first name list
+After rotating the first name list
 
 [[modified-names-list]]
 .Modified names list:
