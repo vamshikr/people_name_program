@@ -1,5 +1,4 @@
 import argparse
-from pprint import pprint
 from collections import Counter
 
 
@@ -14,8 +13,8 @@ def get_all_names(file_path: str) -> list:
     """
     all_names = []
 
-    with open(file_path) as fp:
-        for line in fp:
+    with open(file_path) as fptr:
+        for line in fptr:
             if "--" in line:
                 full_name = line.partition("--")[0]
                 last_name, _, first_name = full_name.partition(",")
@@ -52,7 +51,9 @@ def most_common_first_names(all_names: list, max_count: int):
     """
     print("### most common first names sorted in descending order")
     first_names = Counter((first_name for _, first_name in all_names))
-    pprint(first_names.most_common(max_count))
+
+    for name, count in first_names.most_common(max_count):
+        print("%s: %d" % (name, count))
 
 
 def most_common_last_names(all_names: list, max_count: int):
@@ -68,7 +69,9 @@ def most_common_last_names(all_names: list, max_count: int):
     """
     print("### most common last names sorted in descending order")
     last_names = Counter((last_name for last_name, _ in all_names))
-    pprint(last_names.most_common(max_count))
+
+    for name, count in last_names.most_common(max_count):
+        print("%s: %d" % (name, count))
 
 
 def get_unique_names(all_names: list, max_count: int) -> list:
@@ -102,7 +105,8 @@ def get_unique_names(all_names: list, max_count: int) -> list:
         if count == max_count:
             break
 
-    pprint(unique_names)
+    for last_name, first_name in unique_names:
+        print("%s, %s" % (last_name, first_name))
 
     return unique_names
 
@@ -117,17 +121,15 @@ def modify_names(unique_names: list):
 
     """
     print("### Modified (last name, first name) set")
-    last_names = [last_name for last_name,_ in unique_names]
-    first_names = [first_name for _,first_name in unique_names]
+    last_names = [last_name for last_name, _ in unique_names]
+    first_names = [first_name for _, first_name in unique_names]
 
     # Rotate the first_names list
     first_item = first_names.pop(0)
     first_names.append(first_item)
 
-    modified_names = [(last_name, fist_name) for last_name, fist_name in
-                      zip(last_names, first_names)]
-
-    pprint(modified_names)
+    for last_name, first_name in zip(last_names, first_names):
+        print("%s, %s" % (last_name, first_name))
 
 
 def main(file_path: str, max_count: int):
@@ -135,7 +137,7 @@ def main(file_path: str, max_count: int):
     Main method that calls all the methods tha address the functionality
     Args:
         file_path:
-        num:
+        max_count:
 
     Returns:
 
@@ -144,16 +146,25 @@ def main(file_path: str, max_count: int):
     cardinality(all_names)
     most_common_last_names(all_names, max_count)
     most_common_first_names(all_names, max_count)
-    unique_names= get_unique_names(all_names, max_count)
+    unique_names = get_unique_names(all_names, max_count)
     modify_names(unique_names)
 
 
-if __name__ == "__main__":
+def cli_parser():
+    """
+    Command line options parser
+    Returns:
+
+    """
     parser = argparse.ArgumentParser(description='People Name Program 1.0')
     parser.add_argument('--max-count', dest='max_count', default="25",
-                        help='Number of names to display')
+                        help='Number of names to display, default is 25')
     parser.add_argument('--names-file', dest='filepath', required=True,
                         help="File that contains people's names")
 
-    args = parser.parse_args()
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = cli_parser()
     main(args.filepath, int(args.max_count))

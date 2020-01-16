@@ -31,47 +31,47 @@ Number of unique full names: 49157
 Number of unique last names: 475
 Number of unique first names: 3007
 ### most common last names sorted in descending order
-[('Barton', 143),
- ('Lang', 136),
- ('Ortiz', 135),
- ('Hilll', 134),
- ('Hills', 130),
- ('Terry', 129),
- ('Becker', 128),
- ('Johns', 128),
- ('Romaguera', 128),
- ('Batz', 127)]
+Barton: 143
+Lang: 136
+Ortiz: 135
+Hilll: 134
+Hills: 130
+Terry: 129
+Becker: 128
+Johns: 128
+Romaguera: 128
+Batz: 127
 ### most common first names sorted in descending order
-[('Tara', 34),
- ('Andreanne', 32),
- ('Stephania', 31),
- ('Keon', 31),
- ('Manley', 30),
- ('Kayley', 30),
- ('Ulices', 30),
- ('Summer', 30),
- ('Kaycee', 30),
- ('Milo', 29)]
+Tara: 34
+Andreanne: 32
+Stephania: 31
+Keon: 31
+Manley: 30
+Kayley: 30
+Ulices: 30
+Summer: 30
+Kaycee: 30
+Milo: 29
 ### Unique (last name, first name) set
-[('Graham', 'Mckenna'),
- ('Marvin', 'Garfield'),
- ('McLaughlin', 'Mariah'),
- ('Lang', 'Agustina'),
- ('Bradtke', 'Nikko'),
- ('Adams', 'Luis'),
- ('Lehner', 'Matilde'),
- ('Ortiz', 'Anita'),
- ('Koch', 'Berry'),
- ('Cartwright', 'Nicolas')]
+Graham, Mckenna
+Marvin, Garfield
+McLaughlin, Mariah
+Lang, Agustina
+Bradtke, Nikko
+Adams, Luis
+Lehner, Matilde
+Ortiz, Anita
+Koch, Berry
+Cartwright, Nicolas
 ### Modified (last name, first name) set
-[('Graham', 'Garfield'),
- ('Marvin', 'Mariah'),
- ('McLaughlin', 'Agustina'),
- ('Lang', 'Nikko'),
- ('Bradtke', 'Luis'),
- ('Adams', 'Matilde'),
- ('Lehner', 'Anita'),
- ('Ortiz', 'Berry'),
- ('Koch', 'Nicolas'),
- ('Cartwright', 'Mckenna')]                                                                                
+Graham, Garfield
+Marvin, Mariah
+McLaughlin, Agustina
+Lang, Nikko
+Bradtke, Luis
+Adams, Matilde
+Lehner, Anita
+Ortiz, Berry
+Koch, Nicolas
+Cartwright, Mckenna                                                      
 ```
