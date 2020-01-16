@@ -2,7 +2,7 @@ import argparse
 from collections import Counter
 
 
-def get_all_names(file_path: str) -> list:
+def get_all_names(file_path: str) -> set:
     """
     Get all the names from the given filepath into a list and returns the list
     Args:
@@ -11,18 +11,18 @@ def get_all_names(file_path: str) -> list:
     Returns:
 
     """
-    all_names = []
+    all_names = set()
 
     with open(file_path) as fptr:
         for line in fptr:
             if "--" in line:
                 full_name = line.partition("--")[0]
                 last_name, _, first_name = full_name.partition(",")
-                all_names.append((last_name.strip(), first_name.strip()))
+                all_names.add((last_name.strip(), first_name.strip()))
     return all_names
 
 
-def cardinality(all_names: list):
+def cardinality(all_names: set):
     """
     Prints the cardinality of each the three sets of full, last, and first names
     Args:
@@ -32,13 +32,13 @@ def cardinality(all_names: list):
 
     """
     print("\n### Cardinality")
-    print("Number of unique full names: %s" % len(set(all_names)))
+    print("Number of unique full names: %s" % len(all_names))
     print("Number of unique last names: %s" % len(set((last_name for last_name, _ in all_names))))
     print("Number of unique first names: %s" %
           len(set((first_name for _, first_name in all_names))))
 
 
-def most_common_first_names(all_names: list, max_count: int):
+def most_common_first_names(all_names: set, max_count: int):
     """
     Prints 'max_count' most common last names sorted in descending order, including the count of
     these names
@@ -56,7 +56,7 @@ def most_common_first_names(all_names: list, max_count: int):
         print("%s: %d" % (name, count))
 
 
-def most_common_last_names(all_names: list, max_count: int):
+def most_common_last_names(all_names: set, max_count: int):
     """
     Prints 'max_count' most common first names sorted in descending order, including the count of
     these names
@@ -74,7 +74,7 @@ def most_common_last_names(all_names: list, max_count: int):
         print("%s: %d" % (name, count))
 
 
-def get_unique_names(all_names: list, max_count: int) -> list:
+def get_unique_names(all_names: set, max_count: int) -> set:
     """
     Prints and returns a list of the first 'max_count' names from the file where the following
     is true:
@@ -92,14 +92,14 @@ def get_unique_names(all_names: list, max_count: int) -> list:
     recent_fist_names = set()
     recent_last_names = set()
 
-    unique_names = list()
+    unique_names = set()
     count = 0
     for last_name, first_name in all_names:
 
         if last_name not in recent_last_names and first_name not in recent_fist_names:
             recent_fist_names.add(first_name)
             recent_last_names.add(last_name)
-            unique_names.append((last_name, first_name))
+            unique_names.add((last_name, first_name))
             count += 1
 
         if count == max_count:
@@ -111,9 +111,9 @@ def get_unique_names(all_names: list, max_count: int) -> list:
     return unique_names
 
 
-def modify_names(unique_names: list):
+def modify_names(unique_names: set):
     """
-    Rotates a first_names in the list by one and makes a new list by joining with last_names
+    Rotates first names in the list by one and makes a new list by joining with last names
     Args:
         unique_names:
 
